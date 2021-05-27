@@ -1,0 +1,38 @@
+Type: AWS::RDS::DBCluster
+Properties:
+  DatabaseName: ${self:custom.AURORA.DB_NAME}
+  MasterUsername:
+    !Join [
+        "",
+      [
+          "{{resolve:secretsmanager:",
+          !Ref SecretsManager,
+          ":SecretString:username}}",
+      ],
+    ]
+  MasterUserPassword:
+    !Join [
+        "",
+      [
+          "{{resolve:secretsmanager:",
+          !Ref SecretsManager,
+          ":SecretString:password}}",
+      ],
+    ]
+  DBSubnetGroupName:
+    Ref: ServerlessSubnetGroup
+  Engine: aurora-mysql
+  EngineMode: serverless
+  EngineVersion: "5.7.mysql_aurora.2.07.2"
+  BackupRetentionPeriod: 7
+  EnableHttpEndpoint: true
+  DBClusterParameterGroupName:
+    Ref: AuroraRDSClusterParameter57
+  VpcSecurityGroupIds:
+    - !Ref "ServerlessSecurityGroup"
+  ScalingConfiguration:
+    AutoPause: ${file(./Resources/StageVariables.yml):DBAutoPause.${self:provider.stage}}
+    SecondsUntilAutoPause: 600
+    MaxCapacity: 16
+    MinCapacity: ${file(./Resources/StageVariables.yml):ACU.${self:provider.stage}}
+  DeletionProtection: true

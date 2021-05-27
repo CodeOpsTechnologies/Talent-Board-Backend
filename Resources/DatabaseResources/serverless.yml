@@ -1,0 +1,41 @@
+service: talent-board-backend-database
+
+provider:
+  name: aws
+  region: ${env:REGION, 'ap-southeast-1'}
+  stage: ${opt:stage, 'dev'}
+  runtime: nodejs12.x
+  memorySize: 1024
+  timeout: 30
+  environment:
+    SECRET_ARN:
+      Ref: SecretsManager
+    CLUSTER_ARN: "arn:aws:rds:#{AWS::Region}:#{AWS::AccountId}:cluster:#{AuroraRDSCluster}"
+    DB_NAME: ${self:custom.AURORA.DB_NAME}
+    REGION: ${self:provider.region}
+    SERVICE_NAME: "${self:service}-${self:provider.stage}"
+    STAGE: "${self:provider.stage, dev}"
+
+custom:
+  secretsManagerName: "aws-reskill-connection-${self:provider.stage}-${self:provider.region}"
+  serviceName:
+  AURORA:
+    DB_NAME: "RS"
+    VPC_CIDR: 10
+
+resources:
+  Resources:
+    ServerlessVPC: ${file(./ServerlessVPC.yml)}
+    ServerlessSubnetA: ${file(./ServerlessSubnetA.yml)}
+    ServerlessSubnetB: ${file(./ServerlessSubnetB.yml)}
+    ServerlessSubnetC: ${file(./ServerlessSubnetC.yml)}
+    ServerlessSubnetGroup: ${file(./ServerlessSubnetGroup.yml)}
+    ServerlessSecurityGroup: ${file(./ServerlessSecurityGroup.yml)}
+    RouteTablePublic: ${file(./RouteTablePublic.yml)}
+    RouteTableAssociationSubnetA: ${file(./RouteTableAssociationSubnetA.yml)}
+    RouteTableAssociationSubnetB: ${file(./RouteTableAssociationSubnetB.yml)}
+    RouteTableAssociationSubnetC: ${file(./RouteTableAssociationSubnetC.yml)}
+    AuroraRDSClusterParameter57: ${file(./AuroraRDSClusterParameter57.yml)}
+    AuroraRDSCluster: ${file(./AuroraRDSCluster.yml)}
+    SecretsManager: ${file(./AuroraSecretsManager.yml)}
+    SecretRDSInstanceAttachment: ${file(./SecretsManagerRDSAttachment.yml)}

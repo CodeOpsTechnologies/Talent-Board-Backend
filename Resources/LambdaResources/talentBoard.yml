@@ -1,0 +1,17 @@
+handler: TalentBoard/index.handler
+package:
+  individually: true
+  artifact: "./dist/TalentBoard.zip"
+events:
+  - http:
+      path: /awsug/talent
+      method: post
+      cors: true
+  - http:
+      path: /awsug/talent/profiles
+      method: post
+      cors: true
+  - http:
+      path: /awsug/talent/filters
+      method: get
+      cors: true
