@@ -11,14 +11,11 @@ exports.handler = async event => {
   const { body, resource, httpMethod } = getInputParams(event);
 
   // Routing of APIs
-  if (httpMethod === HttpMethods.POST && resource === "/awsug/talent") {
+  if (httpMethod === HttpMethods.POST && resource === "/talent") {
     return addProfile(body);
   }
 
-  if (
-    httpMethod === HttpMethods.POST &&
-    resource === "/awsug/talent/profiles"
-  ) {
+  if (httpMethod === HttpMethods.POST && resource === "/talent/profiles") {
     return listProfiles({
       limit: body && body.limit ? Number(body.limit) : 20,
       offset: body && body.offset ? Number(body.offset) : 0,
@@ -28,9 +25,9 @@ exports.handler = async event => {
     });
   }
 
-  if (httpMethod === HttpMethods.GET && resource === "/awsug/talent/filters") {
+  if (httpMethod === HttpMethods.GET && resource === "/talent/filters") {
     return getFilters();
   }
 
-  return badRequestResponse(resource);
+  return badRequestResponse("Invalid path");
 };

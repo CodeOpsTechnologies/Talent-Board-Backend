@@ -1,0 +1,108 @@
+{
+  "resource": "/awsug/talent/profiles",
+  "path": "/awsug/talent/profiles",
+  "httpMethod": "POST",
+  "headers": {
+    "Accept": "application/json, text/plain, */*",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Accept-Language": "en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7",
+    "Authorization": "eyJraWQiOiJkZ0dxRDVBekVwbGQ1dEJibm5sRWFpVENNNGJPZDczZGl0YTROTjVjbkp3PSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI5ZTc2ZTA0YS1mNjM1LTRmYTItYWI1ZC04NWZmYTg2MjI2NjciLCJhdWQiOiI0MDdodGlvbGI5c2pncDFyMWl2a2Fvc2k3ayIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJldmVudF9pZCI6IjgwNjU5MzYzLTcwNjItNDA5ZS1iYjEwLWU3NDkxODcxNTI0OCIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjE0MzI5MDU1LCJwcm9maWxlIjoiMSIsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC5hcC1zb3V0aGVhc3QtMS5hbWF6b25hd3MuY29tXC9hcC1zb3V0aGVhc3QtMV9jeGgzeHZ0MVQiLCJjb2duaXRvOnVzZXJuYW1lIjoiOWU3NmUwNGEtZjYzNS00ZmEyLWFiNWQtODVmZmE4NjIyNjY3IiwiZXhwIjoxNjE0MzM1MTc3LCJpYXQiOjE2MTQzMzE1NzcsImVtYWlsIjoicmVhY2h1c0Bhd3NyZXNraWxsLmNvbSJ9.ZmbumkIeCXvZKC6YpfIkwqqanH24Fptd5TDY8fdwIBOc-oG5HRtEbSsoefK3ZiYN7jNvfER2MOHTzTney94CRELUycgdS5w4ln_PcO83H51jGWIYDcoYnjcFkQlAdbyUnOxHNaXjpeLhdnWtpLCAJygBs7PPGAvUb4kNjp2gtE3MdiyfjUhxTbWfpKaXqM-RthJqfQ2GCb1p_RZjs2lVoNILTKhH1tuQxawis9mRBHZto8tJDzA0urYoNEa0ZWiuMZcwqr-GlbviKbUJBQ6PnzYF_72pkzhwo5gZOgaAKkAao4oXC-MKx4aQCnK5RNWGAx4yL48YSqXZsI_vs16_5g",
+    "CloudFront-Forwarded-Proto": "https",
+    "CloudFront-Is-Desktop-Viewer": "true",
+    "CloudFront-Is-Mobile-Viewer": "false",
+    "CloudFront-Is-SmartTV-Viewer": "false",
+    "CloudFront-Is-Tablet-Viewer": "false",
+    "CloudFront-Viewer-Country": "IN",
+    "content-type": "application/json;charset=utf-8",
+    "dnt": "1",
+    "Host": "dev-api.awsreskill.com",
+    "origin": "https://dev.awsreskill.com",
+    "Referer": "https://dev.awsreskill.com",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-site",
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.192 Safari/537.36",
+    "Via": "2.0 31351d66667f002b916476f768543213.cloudfront.net (CloudFront)",
+    "X-Amz-Cf-Id": "sDTGuUq0Of-oe951QUM48FaothVk9NCiB1RrvdcWdQknLwZDbL43qw==",
+    "X-Amzn-Trace-Id": "Root=1-6038bf17-409309b56fcad04b68e5db69",
+    "X-Forwarded-For": "117.247.153.73, 64.252.177.137",
+    "X-Forwarded-Port": "443",
+    "X-Forwarded-Proto": "https"
+  },
+  "multiValueHeaders": {
+    "Accept": ["application/json, text/plain, */*"],
+    "Accept-Encoding": ["gzip, deflate, br"],
+    "Accept-Language": ["en-US,en;q=0.9,mr-IN;q=0.8,mr;q=0.7"],
+    "Authorization": [
+      "eyJraWQiOiJkZ0dxRDVBekVwbGQ1dEJibm5sRWFpVENNNGJPZDczZGl0YTROTjVjbkp3PSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI5ZTc2ZTA0YS1mNjM1LTRmYTItYWI1ZC04NWZmYTg2MjI2NjciLCJhdWQiOiI0MDdodGlvbGI5c2pncDFyMWl2a2Fvc2k3ayIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJldmVudF9pZCI6IjgwNjU5MzYzLTcwNjItNDA5ZS1iYjEwLWU3NDkxODcxNTI0OCIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjE0MzI5MDU1LCJwcm9maWxlIjoiMSIsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC5hcC1zb3V0aGVhc3QtMS5hbWF6b25hd3MuY29tXC9hcC1zb3V0aGVhc3QtMV9jeGgzeHZ0MVQiLCJjb2duaXRvOnVzZXJuYW1lIjoiOWU3NmUwNGEtZjYzNS00ZmEyLWFiNWQtODVmZmE4NjIyNjY3IiwiZXhwIjoxNjE0MzM1MTc3LCJpYXQiOjE2MTQzMzE1NzcsImVtYWlsIjoicmVhY2h1c0Bhd3NyZXNraWxsLmNvbSJ9.ZmbumkIeCXvZKC6YpfIkwqqanH24Fptd5TDY8fdwIBOc-oG5HRtEbSsoefK3ZiYN7jNvfER2MOHTzTney94CRELUycgdS5w4ln_PcO83H51jGWIYDcoYnjcFkQlAdbyUnOxHNaXjpeLhdnWtpLCAJygBs7PPGAvUb4kNjp2gtE3MdiyfjUhxTbWfpKaXqM-RthJqfQ2GCb1p_RZjs2lVoNILTKhH1tuQxawis9mRBHZto8tJDzA0urYoNEa0ZWiuMZcwqr-GlbviKbUJBQ6PnzYF_72pkzhwo5gZOgaAKkAao4oXC-MKx4aQCnK5RNWGAx4yL48YSqXZsI_vs16_5g"
+    ],
+    "CloudFront-Forwarded-Proto": ["https"],
+    "CloudFront-Is-Desktop-Viewer": ["true"],
+    "CloudFront-Is-Mobile-Viewer": ["false"],
+    "CloudFront-Is-SmartTV-Viewer": ["false"],
+    "CloudFront-Is-Tablet-Viewer": ["false"],
+    "CloudFront-Viewer-Country": ["IN"],
+    "content-type": ["application/json;charset=utf-8"],
+    "dnt": ["1"],
+    "Host": ["https://dev.awsreskill.com"],
+    "origin": ["https://dev.awsreskill.com"],
+    "Referer": ["https://dev.awsreskill.com"],
+    "sec-fetch-dest": ["empty"],
+    "sec-fetch-mode": ["cors"],
+    "sec-fetch-site": ["same-site"],
+    "User-Agent": [
+      "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.192 Safari/537.36"
+    ],
+    "Via": ["2.0 31351d66667f002b916476f768543213.cloudfront.net (CloudFront)"],
+    "X-Amz-Cf-Id": ["sDTGuUq0Of-oe951QUM48FaothVk9NCiB1RrvdcWdQknLwZDbL43qw=="],
+    "X-Amzn-Trace-Id": ["Root=1-6038bf17-409309b56fcad04b68e5db69"],
+    "X-Forwarded-For": ["117.247.153.73, 64.252.177.137"],
+    "X-Forwarded-Port": ["443"],
+    "X-Forwarded-Proto": ["https"]
+  },
+  "queryStringParameters": null,
+  "multiValueQueryStringParameters": null,
+  "pathParameters": null,
+  "stageVariables": null,
+  "requestContext": {
+    "resourceId": "sysprd",
+    "authorizer": {
+      "claims": {
+        "sub": "ec99e2fb-8ebb-4bf2-bd53-14cb2d37978d",
+        "profile": 1
+      }
+    },
+    "resourcePath": "/awsug/talent",
+    "httpMethod": "POST",
+    "extendedRequestId": "bWLLuG1QyQ0FccA=",
+    "customDomain": {
+      "basePathMatched": "(none)"
+    },
+    "requestTime": "26/Feb/2021:09:27:51 +0000",
+    "path": "/awsug/talent",
+    "accountId": "781175807610",
+    "protocol": "HTTP/1.1",
+    "stage": "dev",
+    "domainPrefix": "dev-api",
+    "requestTimeEpoch": 1614331671764,
+    "requestId": "40b6d148-1e8d-4f5e-9a3c-22fc65e55c94",
+    "identity": {
+      "cognitoIdentityPoolId": null,
+      "accountId": null,
+      "cognitoIdentityId": null,
+      "caller": null,
+      "sourceIp": "117.247.153.73",
+      "principalOrgId": null,
+      "accessKey": null,
+      "cognitoAuthenticationType": null,
+      "cognitoAuthenticationProvider": null,
+      "userArn": null,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.192 Safari/537.36",
+      "user": null
+    },
+    "domainName": "dev-api.awsreskill.com",
+    "apiId": "la5av74lfh"
+  },
+  "body": "{\"filterBy\": {\"skills\": [\"Serverless\"]}}",
+  "isBase64Encoded": false
+}

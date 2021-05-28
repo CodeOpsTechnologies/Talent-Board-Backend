@@ -4,24 +4,23 @@ provider:
   name: aws
   region: ${env:REGION, 'ap-southeast-1'}
   stage: ${opt:stage, 'dev'}
-  runtime: nodejs12.x
-  memorySize: 1024
-  timeout: 30
   environment:
     SECRET_ARN:
       Ref: SecretsManager
-    CLUSTER_ARN: "arn:aws:rds:#{AWS::Region}:#{AWS::AccountId}:cluster:#{AuroraRDSCluster}"
+    CLUSTER_ARN: ${self:custom.CLUSTER_ARN}
     DB_NAME: ${self:custom.AURORA.DB_NAME}
     REGION: ${self:provider.region}
     SERVICE_NAME: "${self:service}-${self:provider.stage}"
     STAGE: "${self:provider.stage, dev}"
 
 custom:
-  secretsManagerName: "aws-reskill-connection-${self:provider.stage}-${self:provider.region}"
+  secretsManagerName: "talent-board-connection-${self:provider.stage}-${self:provider.region}"
   serviceName:
   AURORA:
-    DB_NAME: "RS"
-    VPC_CIDR: 10
+    DB_NAME: "TB"
+    VPC_CIDR: 12
+  CLUSTER_ARN:
+    Ref: AuroraRDSCluster
 
 resources:
   Resources:
@@ -39,3 +38,12 @@ resources:
     AuroraRDSCluster: ${file(./AuroraRDSCluster.yml)}
     SecretsManager: ${file(./AuroraSecretsManager.yml)}
     SecretRDSInstanceAttachment: ${file(./SecretsManagerRDSAttachment.yml)}
+
+  Outputs:
+    SecretARN:
+      Value:
+        Ref: SecretsManager
+    ClusterName:
+      Value: ${self:custom.CLUSTER_ARN}
+    DBName:
+      Value: ${self:custom.AURORA.DB_NAME}

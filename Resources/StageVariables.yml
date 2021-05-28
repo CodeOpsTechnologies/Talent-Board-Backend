@@ -4,12 +4,3 @@ DBAutoPause:
 ACU:
   dev: 1
   prod: 2
-SpaceNotificationsLambda:
-  dev: reskill-dev-spaceNotifications
-  prod: reskill-prod-spaceNotifications
-Domains:
-  dev: https://dev-talent-board.awsreskill.com
-  prod: https://talent.awsug.in
-WWWDomains:
-  dev: https://www.dev-talent-board.awsreskill.com
-  prod: https://www.talent.awsug.in

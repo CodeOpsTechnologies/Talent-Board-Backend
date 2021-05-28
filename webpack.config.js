@@ -4,7 +4,8 @@ const path = require("path");
 const config = {
   entry: {
     TalentBoard: "./TalentBoard/index.js",
-    TalentBoardCron: "./TalentBoardCron/index.js"
+    TalentBoardCron: "./TalentBoardCron/index.js",
+    Locations: "./Locations/index.js"
   },
   output: {
     filename: "[name]/index.js",

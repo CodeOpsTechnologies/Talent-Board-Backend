@@ -1,4 +1,5 @@
 const { mandatoryFieldsValidation } = require("../Utils/validators");
+const { industries } = require("./industries");
 
 const addProfileValidation = data => {
   const errors = [];
@@ -34,6 +35,10 @@ const addProfileValidation = data => {
     errors.push(
       `Mandatory parameter is missing: ${missingParameters.join(",")}`
     );
+
+  if (!industries.includes(data.industry))
+    errors.push(`Invalid industry selected`);
+
   return errors;
 };
 

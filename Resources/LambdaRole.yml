@@ -1,0 +1,23 @@
+- Effect: Allow
+  Action:
+    - logs:CreateLogStream
+    - logs:CreateLogGroup
+    - logs:PutLogEvents
+  Resource: ${self:custom.SECRET_ARN}
+- Effect: Allow
+  Action:
+    - secretsmanager:GetSecretValue
+    - secretsmanager:PutResourcePolicy
+    - secretsmanager:PutSecretValue
+    - secretsmanager:DescribeSecret
+    - secretsmanager:TagResource
+  Resource: "*"
+- Effect: Allow
+  Action:
+    - rds-data:BatchExecuteStatement
+    - rds-data:BeginTransaction
+    - rds-data:CommitTransaction
+    - rds-data:ExecuteStatement
+    - rds-data:RollbackTransaction
+    - rds-data:ExecuteSql
+  Resource: ${self:custom.CLUSTER_ARN}

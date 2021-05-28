@@ -4,14 +4,14 @@ package:
   artifact: "./dist/TalentBoard.zip"
 events:
   - http:
-      path: /awsug/talent
+      path: /talent
       method: post
       cors: true
   - http:
-      path: /awsug/talent/profiles
+      path: /talent/profiles
       method: post
       cors: true
   - http:
-      path: /awsug/talent/filters
+      path: /talent/filters
       method: get
       cors: true
