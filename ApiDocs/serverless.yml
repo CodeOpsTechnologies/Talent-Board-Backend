@@ -1,0 +1,10 @@
+name: talentboard-documentation
+stage: dev
+reskill-docs:
+  component: "@serverless/website"
+  inputs:
+    code:
+      root: ./
+      src: ./html-docs
+    region: ap-southeast-1
+    bucketName: talentboard-documentaion

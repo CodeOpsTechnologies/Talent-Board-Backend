@@ -1,0 +1,45 @@
+{
+  "author": "KonfHub Technologies",
+  "bugs": {
+    "url": "https://github.com/CodeOpsTechnologies/talent-board-be/issues"
+  },
+  "dependencies": {
+    "data-api-client": "^1.0.1"
+  },
+  "description": "This is talent board backend project source files",
+  "devDependencies": {
+    "apidoc": "^0.18.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.3",
+    "faker": "^5.1.0",
+    "jest": "^24.9.0",
+    "prettier": "^1.19.1",
+    "serverless-dotenv-plugin": "^2.4.2",
+    "serverless-offline": "^6.8.0",
+    "serverless-pseudo-parameters": "^2.5.0",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "zip-webpack-plugin": "^3.0.0"
+  },
+  "homepage": "https://talent.awsug.in",
+  "license": "MIT",
+  "main": "index.js",
+  "name": "talent-board-backend",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeOpsTechnologies/talent-board-be.git"
+  },
+  "scripts": {
+    "apidoc": "apidoc -i Docs/ -o ApiDocs/html-docs/",
+    "bundle": "./node_modules/.bin/webpack",
+    "format": "prettier --write --ignore-path .gitignore \"./**/*.{js,json}\"",
+    "formatCheck": "prettier --check --ignore-path .gitignore \"./**/*.{js,json}\"",
+    "test": "node wakeupDB.js && jest --config=jest.config.js --verbose --detectOpenHandles --coverage"
+  },
+  "version": "1.0.0"
+}

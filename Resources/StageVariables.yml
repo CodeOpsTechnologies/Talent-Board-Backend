@@ -1,0 +1,6 @@
+DBAutoPause:
+  dev: true
+  prod: false
+ACU:
+  dev: 1
+  prod: 2

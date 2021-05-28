@@ -1,0 +1,35 @@
+service: talent-board-backend
+
+provider:
+  name: aws
+  region: ${env:REGION, 'ap-southeast-1'}
+  stage: ${opt:stage, 'dev'}
+  runtime: nodejs12.x
+  memorySize: 1024
+  timeout: 30
+  environment:
+    SECRET_ARN: ${self:custom.SECRET_ARN}
+    CLUSTER_ARN: ${self:custom.CLUSTER_ARN}
+    DB_NAME: ${self:custom.DB_NAME}
+    REGION: ${self:provider.region}
+    SERVICE_NAME: "${self:service}-${self:provider.stage}"
+    STAGE: ${self:provider.stage}
+  iamRoleStatements: ${file(./Resources/LambdaRole.yml)}
+
+plugins:
+  - serverless-pseudo-parameters
+  - serverless-dotenv-plugin
+  - serverless-offline
+
+custom:
+  # "talent-board-backend-database" is the name of the serverless service defined in the database serverless project (/Resources/DatabaseResources/serverless.yml)
+  DATABASE_STACK_NAME: "talent-board-backend-database-${self:provider.stage}"
+  CLUSTER_NAME: ${cf:talent-board-backend-database-${self:provider.stage}.ClusterName}
+  CLUSTER_ARN: "arn:aws:rds:#{AWS::Region}:#{AWS::AccountId}:cluster:${self:custom.CLUSTER_NAME}"
+  SECRET_ARN: ${cf:talent-board-backend-database-${self:provider.stage}.SecretARN}
+  DB_NAME: ${cf:talent-board-backend-database-${self:provider.stage}.DBName}
+
+functions:
+  talentBoard: ${file(./Resources/LambdaResources/talentBoard.yml)}
+  talentBoardCron: ${file(./Resources/LambdaResources/talentBoardCron.yml)}
+  locations: ${file(./Resources/LambdaResources/locations.yml)}

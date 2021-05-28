@@ -1,0 +1,25 @@
+# Serverless Directories
+.serverless
+
+# IDE Directories
+**/.idea
+**/.DS_Store
+**/__pycache__
+package-lock.json
+node_modules
+.DS_Store
+.vscode
+
+
+/input
+/tmp
+
+.env
+
+# JS bundle
+dist
+
+# Test coverage files
+/coverage/
+
+/ApiDocs/html-docs/

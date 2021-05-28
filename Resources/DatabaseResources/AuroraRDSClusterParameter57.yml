@@ -1,0 +1,7 @@
+Type: AWS::RDS::DBClusterParameterGroup
+Properties:
+  Description: Parameter group for the Serverless Aurora RDS DB.
+  Family: aurora-mysql5.7
+  Parameters:
+    character_set_database: "utf32"
+    explicit_defaults_for_timestamp: 0

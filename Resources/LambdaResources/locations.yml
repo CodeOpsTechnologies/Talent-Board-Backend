@@ -1,0 +1,9 @@
+handler: Locations/index.handler
+package:
+  individually: true
+  artifact: "./dist/Locations.zip"
+events:
+  - http:
+      path: /location
+      method: get
+      cors: true
