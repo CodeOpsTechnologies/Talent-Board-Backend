@@ -1,6 +1,6 @@
 {
-  "resource": "/awsug/talent/profiles",
-  "path": "/awsug/talent/profiles",
+  "resource": "/talent/profiles",
+  "path": "/talent/profiles",
   "httpMethod": "POST",
   "headers": {
     "Accept": "application/json, text/plain, */*",
