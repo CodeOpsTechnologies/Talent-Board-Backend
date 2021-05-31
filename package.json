@@ -39,7 +39,7 @@
     "bundle": "./node_modules/.bin/webpack",
     "format": "prettier --write --ignore-path .gitignore \"./**/*.{js,json}\"",
     "formatCheck": "prettier --check --ignore-path .gitignore \"./**/*.{js,json}\"",
-    "test": "node wakeupDB.js && jest --config=jest.config.js --verbose --detectOpenHandles --coverage"
+    "test": "node wakeUpDB.js && jest --config=jest.config.js --verbose --detectOpenHandles --coverage"
   },
   "version": "1.0.0"
 }
