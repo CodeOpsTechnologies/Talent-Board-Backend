@@ -24,11 +24,11 @@ plugins:
 
 custom:
   # "talent-board-backend-database" is the name of the serverless service defined in the database serverless project (/Resources/DatabaseResources/serverless.yml)
-  DATABASE_STACK_NAME: "talent-board-backend-database-${self:provider.stage}"
-  CLUSTER_NAME: ${cf:talent-board-backend-database-${self:provider.stage}.ClusterName}
+  DATABASE_STACK_NAME: ${env:DATABASE_STACK_NAME}-${self:provider.stage}
+  CLUSTER_NAME: ${cf:${self:custom.DATABASE_STACK_NAME}.ClusterName}
   CLUSTER_ARN: "arn:aws:rds:#{AWS::Region}:#{AWS::AccountId}:cluster:${self:custom.CLUSTER_NAME}"
-  SECRET_ARN: ${cf:talent-board-backend-database-${self:provider.stage}.SecretARN}
-  DB_NAME: ${cf:talent-board-backend-database-${self:provider.stage}.DBName}
+  SECRET_ARN: ${cf:${self:custom.DATABASE_STACK_NAME}.SecretARN}
+  DB_NAME: ${cf:${self:custom.DATABASE_STACK_NAME}.DBName}
 
 functions:
   talentBoard: ${file(./Resources/LambdaResources/talentBoard.yml)}

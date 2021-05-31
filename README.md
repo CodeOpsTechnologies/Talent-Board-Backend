@@ -2,6 +2,8 @@
 
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/CodeOpsTechnologies)
 
+[![Deployment](https://github.com/CodeOpsTechnologies/talent-board-be/actions/workflows/main.yml/badge.svg)](https://github.com/CodeOpsTechnologies/talent-board-be/actions/workflows/main.yml)
+
 This is a community initiative to connect active job seekers with organizations and people who participate in employee referral programs.
 
 Currently, we encourage only job seekers / candidates who lost their jobs in the pandemic scenario. Referrals should be verified via LinkedIn profiles. (Click LinkedIn Connect-> Save profile as PDF-> Refer). As a community, it will be a win-win situation for all of us if we can support and make the future safe for one another. Help them to resume their career by referring. #refer2resume
@@ -84,12 +86,18 @@ The above command will output the following details:
 2.  `ClusterName` - The Aurora RDS cluster's name
 3.  `DBName` - The name of the database created
 
-**5.** To bundle the code using webpack, run:
+**5.** Create a secret in your GitHub (https://docs.github.com/en/actions/reference/encrypted-secrets) repo to store the name of the just created database stack name. You can create one by navigating to the Settings and selecting the `Secrets` in the options.
+
+`DATABASE_STACK_NAME=talent-board-backend-database`
+
+The above environment variable will be referenced in the serverless API project to add the database's stack ouputs as environment variables to the lambda functions 
+
+**6.** The lambda function's code is bundled before packaging and deploying to the AWS account using [webpack](https://webpack.js.org/):
 ```shell
 npm run bundle
 ```
 
-**6.** Navigate to the root of your project directory and run the following command to deploy the REST APIs and corresponding Lambda functions:
+**7.** Navigate to the root of your project directory and run the following command to deploy the REST APIs and corresponding Lambda functions:
 ```bash
 # Provision the required API Gateway endpoints & Lambda functions
 cd ..
@@ -98,7 +106,7 @@ serverless deploy
 
 After performing all the above steps, the DB, API and Lambda function resources would be deployed to your AWS account
 
-**7.** Connect to RDS cluster:
+**8.** Connect to RDS cluster:
 
 To proceed further, you will need to connect to the newly created RDS cluster using the [query editor](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/query-editor.html) on the AWS console.
 - Select the RDS cluster created in step 1 from the dropdown. It would be of the format `talent-board-backend-database-<stage>-aurorardscluster-<cluster name>`
@@ -107,7 +115,7 @@ To proceed further, you will need to connect to the newly created RDS cluster us
 
 ![Connect to Database](https://i.ibb.co/cybcXLq/connect-to-database.png)
 
-**8.** Navigate to *[Resources/DatabaseResources/createTable.sql](https://github.com/CodeOpsTechnologies/talent-board-be/blob/main/Resources/DatabaseResources/createTable.sql)* and paste the create table script into query editor
+**9.** Navigate to *[Resources/DatabaseResources/createTable.sql](https://github.com/CodeOpsTechnologies/talent-board-be/blob/main/Resources/DatabaseResources/createTable.sql)* and paste the create table script into query editor
 
 The table schema:
 - `name` - VARCHAR(256) NOT NULL -  Name of the user adding the profile
@@ -126,7 +134,7 @@ The table schema:
 - `expireAfter` - DATE NOT NULL - The UTC date after which the profile should be marked as expired. This date is calculated based on the `visibilityDuration` provided by the user
 - `profileStatus` - TINYINT(4) DEFAULT `1` - The status of the profile, 1 -> Active, 2 -> Expired 
 
-**9.** To deploy the API docs to your AWS account, follow the steps given below:
+**10.** To deploy the API docs to your AWS account, follow the steps given below:
 ```shell
 npm run apidoc # This will build the API documentation - creates the static HTML, CSS etc. 
 cd ApiDocs
@@ -135,6 +143,14 @@ cd ..
 ```
 
 The above steps will deploy the statically generated API docs by running the `npm run apidoc` and the same gets deployed to an S3 bucket using the [Serverless Components](https://github.com/serverless-components/website)
+
+## Points to Remember:
+1.  The application is built to have 2 stages/environments - dev (on the `main` branch) and prod (on the `prod` branch)
+2.  Aurora Serverless supports DB Auto Pause (https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.how-it-works.html), where you configure to pause your Aurora Serverless v1 DB cluster after a given amount of time with no activity. The setup in this application has the dev environment [configured](https://github.com/CodeOpsTechnologies/talent-board-be/blob/main/Resources/DatabaseResources/AuroraRDSCluster.yml#L35) with DB auto pause enabled if there is no activity for more than 10 minutes. But the same is disabled for the prod environment because it takes close to 30 seconds for the DB to be up and running once it gets into the paused state
+3.  The application is configured to be deployed into two AWS regions based on the stage:
+    - dev environment: Singapore (`ap-southeast-1`)
+    - prod environment: Mumbai (`ap-south-1`)
+
 
 ## Contribution Guidelines
 [![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/CodeOpsTechnologies/talent-board-be?logo=git&logoColor=white)](https://github.com/CodeOpsTechnologies/talent-board-be/compare) 
