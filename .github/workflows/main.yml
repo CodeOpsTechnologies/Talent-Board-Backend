@@ -27,13 +27,13 @@ jobs:
         run: npm install
 
       # Deploy API documentation
-      - name: API DOCS Deploy
-        if: github.ref == 'refs/heads/main'
-        run: |
-          npm run apidoc
-          cd ApiDocs/
-          serverless  --verbose
-          cd ..
+#       - name: API DOCS Deploy
+#         if: github.ref == 'refs/heads/main'
+#         run: |
+#           npm run apidoc
+#           cd ApiDocs/
+#           serverless  --verbose
+#           cd ..
 
       # Bundle the project and create zip files using webpack
       - name: Build Project
