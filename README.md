@@ -56,6 +56,8 @@ serverless deploy
 
 **5.** After completion of the step 4, navigate to the root of your project directory and run:
 ```bash
+# bundle the code using webpack
+npm run bundle
 # It will provision the required API Gateway endpoints & Lambdas for the project
 serverless deploy
 ```
@@ -71,6 +73,14 @@ Before you do that you will need to connect to the RDS console query editor. Use
 **6.** To create a table, navigate to *Resources/DatabaseResources/createTable.sql* and paste the script into query editor in RDS console.
 
 By following all the steps above you'll have a table in the database to store profile entries into talent board.
+
+**7.** To deploy API docs to your AWS account, follow the steps given below:
+```shell
+npm run apidoc # This will build the API documentation - creates the static HTML, CSS etc. 
+cd ApiDocs
+serverless --verbose # Deploys api documentation to your aws account
+cd ..
+```
 
 ## Contribution Guidelines
 [![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/CodeOpsTechnologies/talent-board-be?logo=git&logoColor=white)](https://github.com/CodeOpsTechnologies/talent-board-be/compare) 
