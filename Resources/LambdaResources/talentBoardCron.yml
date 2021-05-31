@@ -5,6 +5,6 @@ package:
   artifact: "./dist/TalentBoardCron.zip"
 events:
   - schedule:
-      name: talent-board-cron
+      name: talentBoard-cron
       description: 'triggered every day to mark user profile as inactive after visibility duration is over'
       rate: cron(30 18 * * ? *) # To trigger at 12AM (IST) every day
