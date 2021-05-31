@@ -166,6 +166,7 @@ The above steps will deploy the statically generated API docs by running the `np
 ## Other Useful Links
 
 Frontend Code - [https://github.com/CodeOpsTechnologies/talent-board-fe](https://github.com/CodeOpsTechnologies/talent-board-fe)
+<br />
 Backend Code - [https://github.com/CodeOpsTechnologies/talent-board-be](https://github.com/CodeOpsTechnologies/talent-board-be)
 <br>
 
