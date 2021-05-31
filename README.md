@@ -64,7 +64,7 @@ cd talent-board-be
 ```bash
 npm install
 ```
-**4.** You'll need to navigate into *[/Resources/DatabaseResources](https://github.com/CodeOpsTechnologies/talent-board-be/tree/main/Resources/DatabaseResources)* and run the following command to deploy the Aurora Serverless database:
+**4.** You'll need to navigate into *[/Resources/DatabaseResources](https://github.com/CodeOpsTechnologies/talent-board-be/tree/main/Resources/DatabaseResources)* and run the following command to deploy the Aurora Serverless database **[Note: This step is only needed to do once manually]**:
 ```bash
 cd Resources/DatabaseResources/
 # Provision database resources (VPC, Subnets, RDS Cluster, etc.)
@@ -84,16 +84,21 @@ The above command will output the following details:
 2.  `ClusterName` - The Aurora RDS cluster's name
 3.  `DBName` - The name of the database created
 
-**5.** Navigate to the root of your project directory and run the following command to deploy the REST APIs and corresponding Lambda functions:
+**5.** To bundle the code using webpack, run:
+```shell
+npm run bundle
+```
+
+**6.** Navigate to the root of your project directory and run the following command to deploy the REST APIs and corresponding Lambda functions:
 ```bash
-cd ..
 # Provision the required API Gateway endpoints & Lambda functions
+cd ..
 serverless deploy
 ```
 
 After performing all the above steps, the DB, API and Lambda function resources would be deployed to your AWS account
 
-**6.** Connect to RDS cluster:
+**7.** Connect to RDS cluster:
 
 To proceed further, you will need to connect to the newly created RDS cluster using the [query editor](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/query-editor.html) on the AWS console.
 - Select the RDS cluster created in step 1 from the dropdown. It would be of the format `talent-board-backend-database-<stage>-aurorardscluster-<cluster name>`
@@ -102,7 +107,7 @@ To proceed further, you will need to connect to the newly created RDS cluster us
 
 ![Connect to Database](https://i.ibb.co/cybcXLq/connect-to-database.png)
 
-**6.** Navigate to *[Resources/DatabaseResources/createTable.sql](https://github.com/CodeOpsTechnologies/talent-board-be/blob/main/Resources/DatabaseResources/createTable.sql)* and paste the create table script into query editor
+**8.** Navigate to *[Resources/DatabaseResources/createTable.sql](https://github.com/CodeOpsTechnologies/talent-board-be/blob/main/Resources/DatabaseResources/createTable.sql)* and paste the create table script into query editor
 
 The table schema:
 - `name` - VARCHAR(256) NOT NULL -  Name of the user adding the profile
@@ -121,6 +126,16 @@ The table schema:
 - `expireAfter` - DATE NOT NULL - The UTC date after which the profile should be marked as expired. This date is calculated based on the `visibilityDuration` provided by the user
 - `profileStatus` - TINYINT(4) DEFAULT `1` - The status of the profile, 1 -> Active, 2 -> Expired 
 
+**9.** To deploy the API docs to your AWS account, follow the steps given below:
+```shell
+npm run apidoc # This will build the API documentation - creates the static HTML, CSS etc. 
+cd ApiDocs
+serverless --verbose # Deploys api documentation to your aws account
+cd ..
+```
+
+The above steps will deploy the statically generated API docs by running the `npm run apidoc` and the same gets deployed to an S3 bucket using the [Serverless Components](https://github.com/serverless-components/website)
+
 ## Contribution Guidelines
 [![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/CodeOpsTechnologies/talent-board-be?logo=git&logoColor=white)](https://github.com/CodeOpsTechnologies/talent-board-be/compare) 
 [![GitHub contributors](https://img.shields.io/github/contributors/CodeOpsTechnologies/talent-board-be?logo=github)](https://github.com/CodeOpsTechnologies/talent-board-be/graphs/contributors) 
@@ -136,12 +151,8 @@ The table schema:
 ## Other Useful Links
 
 Frontend Code - [https://github.com/CodeOpsTechnologies/talent-board-fe](https://github.com/CodeOpsTechnologies/talent-board-fe)
-<br>
-Deployed URL - [https://talent.awsug.in/](https://talent.awsug.in/)
-<br>
 Backend Code - [https://github.com/CodeOpsTechnologies/talent-board-be](https://github.com/CodeOpsTechnologies/talent-board-be)
 <br>
-API Docs - [http://reskill-documentaion.s3-website-ap-southeast-1.amazonaws.com/#api-AWS_UG_Talent_Board](http://reskill-documentaion.s3-website-ap-southeast-1.amazonaws.com/#api-AWS_UG_Talent_Board)
 
 ***Glad to see you here! Show some love by [starring](https://github.com/CodeOpsTechnologies/talent-board-fe/) this repo.***
 
