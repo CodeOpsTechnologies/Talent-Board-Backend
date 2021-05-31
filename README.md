@@ -97,12 +97,8 @@ cd ..
 ## Other Useful Links
 
 Frontend Code - [https://github.com/CodeOpsTechnologies/talent-board-fe](https://github.com/CodeOpsTechnologies/talent-board-fe)
-<br>
-Deployed URL - [https://talent.awsug.in/](https://talent.awsug.in/)
-<br>
 Backend Code - [https://github.com/CodeOpsTechnologies/talent-board-be](https://github.com/CodeOpsTechnologies/talent-board-be)
 <br>
-API Docs - [http://reskill-documentaion.s3-website-ap-southeast-1.amazonaws.com/#api-AWS_UG_Talent_Board](http://reskill-documentaion.s3-website-ap-southeast-1.amazonaws.com/#api-AWS_UG_Talent_Board)
 
 ***Glad to see you here! Show some love by [starring](https://github.com/CodeOpsTechnologies/talent-board-fe/) this repo.***
 
