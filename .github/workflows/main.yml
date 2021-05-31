@@ -1,4 +1,4 @@
-name: Continuous deploy
+name: Deployment
 
 on:
   push:
