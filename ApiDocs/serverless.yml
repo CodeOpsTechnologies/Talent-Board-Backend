@@ -7,4 +7,4 @@ talentboard-docs:
       root: ./
       src: ./html-docs
     region: ap-southeast-1
-    bucketName: talentboard-documentation
+    bucketName: talentboard-api-documentation

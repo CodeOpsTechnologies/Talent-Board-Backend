@@ -35,7 +35,7 @@
     "url": "git+https://github.com/CodeOpsTechnologies/talent-board-be.git"
   },
   "scripts": {
-    "apidoc": "apidoc -i Docs/ -o ApiDocs/html-docs/",
+    "docs": "apidoc -i Docs/ -o ApiDocs/html-docs/",
     "bundle": "./node_modules/.bin/webpack",
     "format": "prettier --write --ignore-path .gitignore \"./**/*.{js,json}\"",
     "formatCheck": "prettier --check --ignore-path .gitignore \"./**/*.{js,json}\"",
