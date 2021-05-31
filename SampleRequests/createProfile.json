@@ -1,6 +1,6 @@
 {
-  "resource": "/awsug/talent",
-  "path": "/awsug/talent",
+  "resource": "/talent",
+  "path": "/talent",
   "httpMethod": "POST",
   "headers": {
     "Accept": "application/json, text/plain, */*",

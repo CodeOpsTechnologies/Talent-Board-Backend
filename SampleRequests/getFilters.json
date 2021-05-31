@@ -1,6 +1,6 @@
 {
-  "resource": "/awsug/talent/filters",
-  "path": "/awsug/talent/filters",
+  "resource": "/talent/filters",
+  "path": "/talent/filters",
   "httpMethod": "GET",
   "headers": {
     "Accept": "application/json, text/plain, */*",
