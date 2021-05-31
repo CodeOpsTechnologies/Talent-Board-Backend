@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - prod
 
 jobs:
   serverless-deploy:
@@ -25,6 +26,7 @@ jobs:
       - name: Install npm
         run: npm install
 
+      # Deploy API documentation
       - name: API DOCS Deploy
         if: github.ref == 'refs/heads/main'
         run: |
@@ -33,13 +35,16 @@ jobs:
           serverless  --verbose
           cd ..
 
+      # Bundle the project and create zip files using webpack
       - name: Build Project
         run: npm run bundle
 
+      # Deploy to dev environment (Singapore region)
       - name: Deploy dev
         if: github.ref == 'refs/heads/main'
         run: serverless deploy --region ap-southeast-1 --verbose
 
+      # Deploy to prod environment (Mumbai region)
       - name: Deploy prod
         if: github.ref == 'refs/heads/prod'
         run: serverless deploy --region ap-south-1 --verbose
