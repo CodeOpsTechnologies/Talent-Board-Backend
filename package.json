@@ -18,6 +18,7 @@
     "eslint-plugin-prettier": "^3.1.3",
     "faker": "^5.1.0",
     "jest": "^24.9.0",
+    "jest-coverage-badges": "^1.1.2",
     "prettier": "^1.19.1",
     "serverless-dotenv-plugin": "^2.4.2",
     "serverless-offline": "^6.8.0",
@@ -39,7 +40,7 @@
     "bundle": "./node_modules/.bin/webpack",
     "format": "prettier --write --ignore-path .gitignore \"./**/*.{js,json}\"",
     "formatCheck": "prettier --check --ignore-path .gitignore \"./**/*.{js,json}\"",
-    "test": "node wakeUpDB.js && jest --config=jest.config.js --verbose --detectOpenHandles --coverage"
+    "test": "node wakeUpDB.js && jest --config=jest.config.js --verbose --detectOpenHandles --coverage --coverageReporters=\"json-summary\" && jest-coverage-badges"
   },
   "version": "1.0.0"
 }
