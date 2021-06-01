@@ -15,7 +15,7 @@ describe("TalentBoard - TalentBoard test cases for Add Profile", () => {
         const request = {
           name: faker.name.findName(),
           skills: ["DynamoDB", "S3"],
-          industry: "IT",
+          industry: "Computer Software",
           jobRole: "Serverless Consultant",
           proficiencyLevel: 1,
           relocation: false,
