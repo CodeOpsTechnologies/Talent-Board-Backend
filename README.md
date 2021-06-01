@@ -150,6 +150,26 @@ The above steps will deploy the statically generated API docs by running the `np
     - dev environment: Singapore (`ap-southeast-1`)
     - prod environment: Mumbai (`ap-south-1`)
 
+## GitHub Actions
+### Steps to setup CI/CD using GitHub Actions
+The following is the list of steps that is executed as a part of the CICD setup:
+
+1. Store all account credentials in GitHub [secrets](https://docs.github.com/en/actions/reference/encrypted-secrets) to access them in environment without exposing. The AWS credentials will be used for deploying the application into your AWS account and the database details is used for running the test cases as a part of the CICD setup
+```bash
+AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+AWS_SECRET_ACCESS_KEY: ${{secretAWS_SECRET_ACCESS_KEY}}
+SECRET_ARN: ${{secrets.SECRET_ARN}}
+CLUSTER_ARN: ${{secrets.CLUSTER_ARN}}
+REGION: ${{secrets.REGION}}
+DB_NAME: ${{secrets.DB_NAME}}
+```
+2. Install serverless
+3. Install npm
+4. Tests - Automated tests to execute while deploying
+5. Deploy API DOCS
+6. Build project using webpack
+7. Deploy to dev environment: Singapore (`ap-southeast-1`)
+8. Deploy to prod environment: Mumbai (`ap-south-1`)
 
 ## Contribution Guidelines
 [![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/CodeOpsTechnologies/talent-board-be?logo=git&logoColor=white)](https://github.com/CodeOpsTechnologies/talent-board-be/compare) 
