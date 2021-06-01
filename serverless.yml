@@ -2,7 +2,7 @@ service: talent-board-backend
 
 provider:
   name: aws
-  region: ${env:REGION, 'ap-southeast-1'}
+  region: ${opt:region, 'ap-southeast-1'}
   stage: ${opt:stage, 'dev'}
   runtime: nodejs12.x
   memorySize: 1024
