@@ -160,10 +160,12 @@ The following is the list of steps that is executed as a part of the CICD setup:
 ```bash
 AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
 AWS_SECRET_ACCESS_KEY: ${{secretAWS_SECRET_ACCESS_KEY}}
+DATABASE_STACK_NAME: ${{secrets.DATABASE_STACK_NAME}}
 SECRET_ARN: ${{secrets.SECRET_ARN}}
 CLUSTER_ARN: ${{secrets.CLUSTER_ARN}}
 REGION: ${{secrets.REGION}}
 DB_NAME: ${{secrets.DB_NAME}}
+
 ```
 2. Install serverless
 3. Install npm
@@ -172,6 +174,20 @@ DB_NAME: ${{secrets.DB_NAME}}
 6. Build project using webpack
 7. Deploy to dev environment: Singapore (`ap-southeast-1`)
 8. Deploy to prod environment: Mumbai (`ap-south-1`)
+
+## Testing
+### Steps to perform testing of deployed APIs locally using serverless framework
+1. Navigate to directory *[/SampleRequests](https://github.com/CodeOpsTechnologies/Talent-Board-Backend/tree/main/SampleRequests)*
+2. There are 3 sample request files in `json` format.
+    - [createProfile.json](https://github.com/CodeOpsTechnologies/Talent-Board-Backend/blob/main/SampleRequests/createProfile.json) - to test addProfile API
+    - [getFilters.json](https://github.com/CodeOpsTechnologies/Talent-Board-Backend/blob/main/SampleRequests/getFilters.json) - to test getFilters API
+    - [listProfiles.json](https://github.com/CodeOpsTechnologies/Talent-Board-Backend/blob/main/SampleRequests/listProfiles.json) - to test listProfiles API
+3. Go to the terminal and run the following command:
+```shell
+serverless invoke local -f talentBoard -p ./SampleRequests/<requestFile.json> --stage <stage>
+# ex - serverless invoke local -f talentBoard -p ./SampleRequests/listProfiles.json --stage dev
+```
+The command above will print response from the respective api in terminal window.
 
 ## Contribution Guidelines
 [![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/CodeOpsTechnologies/talent-board-be?logo=git&logoColor=white)](https://github.com/CodeOpsTechnologies/talent-board-be/compare) 
@@ -189,8 +205,9 @@ DB_NAME: ${{secrets.DB_NAME}}
 
 Frontend Code - [https://github.com/CodeOpsTechnologies/talent-board-fe](https://github.com/CodeOpsTechnologies/talent-board-fe)
 <br />
-Backend Code - [https://github.com/CodeOpsTechnologies/talent-board-be](https://github.com/CodeOpsTechnologies/talent-board-be)
-<br>
+Backend Code - [https://github.com/CodeOpsTechnologies/Talent-Board-Backend](https://github.com/CodeOpsTechnologies/Talent-Board-Backend)
+<br />
+API Documentation - [http://talentboard-api-documentation.s3-website-ap-southeast-1.amazonaws.com/](http://talentboard-api-documentation.s3-website-ap-southeast-1.amazonaws.com/)
 
 ***Glad to see you here! Show some love by [starring](https://github.com/CodeOpsTechnologies/talent-board-fe/) this repo.***
 
