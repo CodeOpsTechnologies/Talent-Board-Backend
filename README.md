@@ -1,7 +1,7 @@
 # TalentBoard Backend
 
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/CodeOpsTechnologies)
-[![Deployment](https://github.com/CodeOpsTechnologies/talent-board-be/actions/workflows/main.yml/badge.svg)](https://github.com/CodeOpsTechnologies/talent-board-be/actions/workflows/main.yml)
+[![Deployment](https://github.com/CodeOpsTechnologies/Talent-Board-Backend/actions/workflows/main.yml/badge.svg)](https://github.com/CodeOpsTechnologies/Talent-Board-Backend/actions/workflows/main.yml)
 
 This is a community initiative to connect active job seekers with organizations and people who participate in employee referral programs.
 
