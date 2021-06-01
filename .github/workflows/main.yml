@@ -51,10 +51,10 @@ jobs:
 
       # Deploy to dev environment (Singapore region)
       - name: Deploy dev
-        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/prod'
+        if: github.ref == 'refs/heads/main'
         run: serverless deploy --region ap-southeast-1 --verbose
 
       # Deploy to prod environment (Mumbai region)
       - name: Deploy prod
         if: github.ref == 'refs/heads/prod'
-        run: serverless deploy --region ap-south-1 --verbose
+        run: serverless deploy --region ap-south-1 --stage prod --verbose
