@@ -1,5 +1,3 @@
-const { DB_ERRORS } = require("./customErrors");
-
 const { STAGE } = process.env;
 
 const headers = {
@@ -13,40 +11,11 @@ const okResponse = (body = "success") => ({
   headers
 });
 
-const internalServerError = async ({
-  error,
-  msg = "Internal Server Error"
-}) => {
-  if (error instanceof Array) error.forEach(e => console.error(msg, e));
-  else console.error(msg, error);
-  try {
-    if (
-      error &&
-      error.code === "BadRequestException" &&
-      error.message.includes(DB_ERRORS.DUPLICATE_KEY_ERROR)
-    ) {
-      console.error("Duplicate Entry detected");
-      return {
-        statusCode: 400,
-        body: JSON.stringify(error),
-        headers
-      };
-    }
-  } catch (err) {
-    console.log("err while sending email:", err);
-    console.error("error while triggering the dev email");
-    return {
-      statusCode: 500,
-      body: STAGE === "prod" ? "Internal Server Error" : JSON.stringify(err),
-      headers
-    };
-  }
-  return {
-    statusCode: 500,
-    body: STAGE === "prod" ? "Internal Server Error" : JSON.stringify(error),
-    headers
-  };
-};
+const internalServerError = (error = "Internal Server Error") => ({
+  statusCode: 500,
+  body: STAGE === "prod" ? "Internal Server Error" : JSON.stringify(error),
+  headers
+});
 
 const resourceNotFound = (body = "Requested resource not found") => ({
   statusCode: 404,
