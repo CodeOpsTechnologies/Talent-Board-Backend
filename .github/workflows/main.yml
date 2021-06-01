@@ -13,6 +13,7 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
       AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+      DATABASE_STACK_NAME: ${{secrets.DATABASE_STACK_NAME}}
       # The following environment variables for the running the test cases
       SECRET_ARN: ${{secrets.SECRET_ARN}}
       CLUSTER_ARN: ${{secrets.CLUSTER_ARN}}
