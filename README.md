@@ -11,6 +11,8 @@ Currently, we encourage only job seekers / candidates who lost their jobs in the
 
 ![TalentBoard Architecture](https://user-images.githubusercontent.com/23396903/120200797-597e1f80-c242-11eb-9cc7-2c47126f088b.PNG)
 
+The architecture diagram was built using [CloudSkew](https://cloudskew.com), a free architecture tooling application.
+
 ## Prerequisites
 - [Node.js](https://nodejs.org/en/download/) & [NPM](https://www.npmjs.com/get-npm) 
 - [Serverless framework](https://www.npmjs.com/package/serverless)
