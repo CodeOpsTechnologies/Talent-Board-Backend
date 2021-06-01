@@ -36,13 +36,13 @@ jobs:
         run: npm run test
 
       # Deploy API documentation
-#       - name: API DOCS Deploy
-#         if: github.ref == 'refs/heads/main'
-#         run: |
-#           npm run docs
-#           cd ApiDocs/
-#           serverless --verbose --inputs bucketName=talentBoard-apidocs
-#           cd ..
+      - name: API DOCS Deploy
+        if: github.ref == 'refs/heads/main'
+        run: |
+          npm run docs
+          cd ApiDocs/
+          serverless --verbose --inputs bucketName=talentBoard-apidocs
+          cd ..
 
       # Bundle the project and create zip files using webpack
       - name: Build Project
