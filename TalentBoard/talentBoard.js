@@ -8,7 +8,10 @@ const {
   okResponse
 } = require("../Utils/proxyResponseCodes").responseMessages;
 const { addProfileValidation } = require("./talentBoard-validations");
-const { TalentBoardUserStatus } = require("../Utils/constants");
+const {
+  TalentBoardUserStatus,
+  VisibilityDurationMapping
+} = require("../Utils/constants");
 const {
   executeQuery,
   getInsertQuery,
@@ -29,7 +32,8 @@ async function addProfile(event) {
   if (validationResult.length) return badRequestResponse(validationResult);
 
   // Calculating expireAfter field (expireAfter field will keep track as to when the profile should expire)
-  const days = event.visibilityDuration;
+  const days = VisibilityDurationMapping[event.visibilityDuration];
+
   const currentDate = new Date();
   currentDate.setDate(currentDate.getDate() + days);
 
