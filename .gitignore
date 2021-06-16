@@ -5,7 +5,6 @@
 **/.idea
 **/.DS_Store
 **/__pycache__
-package-lock.json
 node_modules
 .DS_Store
 .vscode
@@ -18,8 +17,5 @@ node_modules
 
 # JS bundle
 dist
-
-# Test coverage files
-/coverage/
 
 /ApiDocs/html-docs/

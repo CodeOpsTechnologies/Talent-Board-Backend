@@ -1,4 +1,3 @@
-const { mandatoryFieldsValidation } = require("../Utils/validators");
 const { industries } = require("./industries");
 
 const addProfileValidation = data => {
@@ -42,15 +41,6 @@ const addProfileValidation = data => {
   return errors;
 };
 
-const listProfilesValidation = (limit, offset) => {
-  const errors = [];
-  const mandatoryFields = ["limit", "offset"];
-  const res = mandatoryFieldsValidation(mandatoryFields, { limit, offset });
-  if (res.length) errors.push(`Mandatory fields missing: ${res.join(",")}`);
-  return errors;
-};
-
 module.exports = {
-  addProfileValidation,
-  listProfilesValidation
+  addProfileValidation
 };

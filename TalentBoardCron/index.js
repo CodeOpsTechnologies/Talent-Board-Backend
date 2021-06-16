@@ -11,7 +11,7 @@ const handler = async () => {
 
   const updateAttributes = { profileStatus: TalentBoardUserStatus.EXPIRED };
 
-  const whereClause = `expireAfter < ${getTimeStamp()} AND profileStatus = ${
+  const whereClause = `expireAfter < "${getTimeStamp()}" AND profileStatus = ${
     TalentBoardUserStatus.ACTIVE
   }`;
 

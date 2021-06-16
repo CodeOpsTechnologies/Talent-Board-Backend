@@ -74,17 +74,35 @@ describe("TalentBoard - TalentBoard test cases for Add Profile", () => {
         const data = await listProfiles({
           limit: 20,
           offset: 0,
-          sort: "+name"
+          sort: "+name",
+          filterBy: {
+            city: ["bengaluru"],
+            skills: ["serverless"],
+            industry: ["Computer Software"],
+            proficiencyLevel: ["Beginner"],
+            experience: [1]
+          }
         });
-        data.body = JSON.parse(data.body);
-        expect(data.body.profiles.length).toBeGreaterThan(0);
+        expect(data).toHaveProperty("statusCode", 200);
+      },
+      defaultTimeout
+    );
+
+    test(
+      "[Positive] List all profiles of users with filters provided",
+      async () => {
+        const data = await listProfiles({
+          limit: 20,
+          offset: 0,
+          sort: "+name",
+          searchTerm: "serverless"
+        });
+        expect(data).toHaveProperty("statusCode", 200);
       },
       defaultTimeout
     );
   });
-});
 
-describe("TalentBoard - TalentBoard test cases for Get Filters", () => {
   describe("getFilters test case", () => {
     test(
       "[Positive] getFilters test case",
