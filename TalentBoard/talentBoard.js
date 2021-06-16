@@ -29,7 +29,14 @@ async function addProfile(event) {
   if (validationResult.length) return badRequestResponse(validationResult);
 
   // Calculating expireAfter field (expireAfter field will keep track as to when the profile should expire)
-  const days = event.visibilityDuration;
+  let days = 0;
+
+  if (event.visibilityDuration === 1) days = 15;
+  else if (event.visibilityDuration === 2) days = 30;
+  else if (event.visibilityDuration === 3) days = 45;
+  else if (event.visibilityDuration === 4) days = 60;
+  else if (event.visibilityDuration === 5) days = 90;
+
   const currentDate = new Date();
   currentDate.setDate(currentDate.getDate() + days);
 
