@@ -3,7 +3,7 @@ const TalentBoardUserStatus = {
   EXPIRED: 2
 };
 
-const visibilityDurationMapping = {
+const VisibilityDurationMapping = {
   1: 15,
   2: 30,
   3: 45,
@@ -13,5 +13,5 @@ const visibilityDurationMapping = {
 
 module.exports = {
   TalentBoardUserStatus,
-  visibilityDurationMapping
+  VisibilityDurationMapping
 };

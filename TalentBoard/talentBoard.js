@@ -10,7 +10,7 @@ const {
 const { addProfileValidation } = require("./talentBoard-validations");
 const {
   TalentBoardUserStatus,
-  visibilityDurationMapping
+  VisibilityDurationMapping
 } = require("../Utils/constants");
 const {
   executeQuery,
@@ -32,7 +32,7 @@ async function addProfile(event) {
   if (validationResult.length) return badRequestResponse(validationResult);
 
   // Calculating expireAfter field (expireAfter field will keep track as to when the profile should expire)
-  const days = visibilityDurationMapping[event.visibilityDuration];
+  const days = VisibilityDurationMapping[event.visibilityDuration];
 
   const currentDate = new Date();
   currentDate.setDate(currentDate.getDate() + days);
