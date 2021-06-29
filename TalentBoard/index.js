@@ -12,7 +12,8 @@ exports.handler = async event => {
 
   // Routing of APIs
   if (httpMethod === HttpMethods.POST && resource === "/talent") {
-    return addProfile(body);
+    if (body) return addProfile(body);
+    return badRequestResponse(`No input provided.`);
   }
 
   if (httpMethod === HttpMethods.POST && resource === "/talent/profiles") {
